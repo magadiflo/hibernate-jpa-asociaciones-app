@@ -3,6 +3,8 @@ package org.magadiflo.hibernate.app.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
@@ -22,15 +24,23 @@ public class Cliente {
     @Embedded
     private Auditoria audit = new Auditoria();
 
+    //CascadeType.ALL, cada que se crea un Cliente, también creará a sus relaciones o sea Direcciones
+    //orphanRemoval = true, al eliminar un cliente automaticamente se eliminarán todos las direcciones asociadas a él
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Direccion> direcciones;
+
     public Cliente() {
+        this.direcciones = new ArrayList<>();
     }
 
     public Cliente(String nombre, String apellido) {
+        this();
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
     public Cliente(Long id, String nombre, String apellido, String formaPago) {
+        this();
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -69,6 +79,14 @@ public class Cliente {
         this.formaPago = formaPago;
     }
 
+    public List<Direccion> getDirecciones() {
+        return direcciones;
+    }
+
+    public void setDirecciones(List<Direccion> direcciones) {
+        this.direcciones = direcciones;
+    }
+
     @Override
     public String toString() {
         LocalDateTime creado = this.audit != null ? audit.getCreadoEn() : null;
@@ -80,6 +98,7 @@ public class Cliente {
         sb.append(", formaPago='").append(formaPago).append('\'');
         sb.append(", creadoEn=").append(creado);
         sb.append(", editadoEn=").append(editado);
+        sb.append(", direcciones=").append(direcciones);
         sb.append('}');
         return sb.toString();
     }
