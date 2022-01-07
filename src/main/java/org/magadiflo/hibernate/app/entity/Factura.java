@@ -14,6 +14,7 @@ public class Factura {
     private Long total;
 
     @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     public Factura() {
