@@ -23,6 +23,7 @@ public class HibernateAsociacionesOneToManyFind {
 
             em.merge(cliente);
 
+            System.out.println("Cliente guardado: " + cliente);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().begin();

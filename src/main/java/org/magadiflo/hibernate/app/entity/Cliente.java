@@ -27,7 +27,13 @@ public class Cliente {
     //CascadeType.ALL, cada que se crea un Cliente, también creará a sus relaciones o sea Direcciones
     //orphanRemoval = true, al eliminar un cliente automaticamente se eliminarán todos las direcciones asociadas a él
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "cliente_id") //Crea la llave foránea en la BD, tabla direcciones
+    //Crea la llave foránea en la BD, tabla direcciones
+    //@JoinColumn(name = "cliente_id")
+    //Crea una tabla intermedia llamada tbl_clientes_direcciones donde se almacenan las llaves de clientes y direcciones
+    @JoinTable(name = "tbl_clientes_direcciones",
+            joinColumns = @JoinColumn(name = "cliente_id"),
+            inverseJoinColumns = @JoinColumn(name = "direccion_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"direccion_id"}))
     private List<Direccion> direcciones;
 
     public Cliente() {
