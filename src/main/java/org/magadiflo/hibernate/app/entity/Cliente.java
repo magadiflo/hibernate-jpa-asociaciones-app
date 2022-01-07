@@ -27,6 +27,7 @@ public class Cliente {
     //CascadeType.ALL, cada que se crea un Cliente, también creará a sus relaciones o sea Direcciones
     //orphanRemoval = true, al eliminar un cliente automaticamente se eliminarán todos las direcciones asociadas a él
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cliente_id") //Crea la llave foránea en la BD, tabla direcciones
     private List<Direccion> direcciones;
 
     public Cliente() {
@@ -103,3 +104,7 @@ public class Cliente {
         return sb.toString();
     }
 }
+/**
+ * Seccupib 59
+ * 519. Codificando ejemplo OneToMany
+ */
