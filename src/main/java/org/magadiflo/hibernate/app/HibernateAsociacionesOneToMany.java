@@ -24,6 +24,18 @@ public class HibernateAsociacionesOneToMany {
             em.persist(cliente);
 
             em.getTransaction().commit();
+
+            System.out.println("Cliente guardado: " + cliente);
+
+            em.getTransaction().begin();
+
+            //Suponiendo que es una nueva consulta, buscaremos nuevamente al mismo cliente
+            cliente = em.find(Cliente.class, cliente.getId());
+            cliente.getDirecciones().remove(d1);
+
+            em.getTransaction().commit();
+
+            System.out.println("Cliente actualizado: " + cliente);
         } catch (Exception e) {
             em.getTransaction().begin();
             e.printStackTrace();
