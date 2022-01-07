@@ -36,8 +36,12 @@ public class Cliente {
             uniqueConstraints = @UniqueConstraint(columnNames = {"direccion_id"}))
     private List<Direccion> direcciones;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cliente")
+    private List<Factura> facturas;
+
     public Cliente() {
         this.direcciones = new ArrayList<>();
+        this.facturas = new ArrayList<>();
     }
 
     public Cliente(String nombre, String apellido) {
@@ -90,8 +94,31 @@ public class Cliente {
         return direcciones;
     }
 
+    public Auditoria getAudit() {
+        return audit;
+    }
+
+    public void setAudit(Auditoria audit) {
+        this.audit = audit;
+    }
+
     public void setDirecciones(List<Direccion> direcciones) {
         this.direcciones = direcciones;
+    }
+
+    public List<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
+    }
+
+    //Establecemos la relación en ambos lados para su guardado
+    public Cliente addFactura(Factura factura){
+        this.facturas.add(factura);
+        factura.setCliente(this);
+        return this;
     }
 
     @Override
@@ -106,6 +133,7 @@ public class Cliente {
         sb.append(", creadoEn=").append(creado);
         sb.append(", editadoEn=").append(editado);
         sb.append(", direcciones=").append(direcciones);
+        sb.append(", facturas=").append(facturas);
         sb.append('}');
         return sb.toString();
     }

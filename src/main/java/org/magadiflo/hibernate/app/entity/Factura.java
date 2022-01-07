@@ -63,7 +63,7 @@ public class Factura {
         sb.append("id=").append(id);
         sb.append(", descripcion='").append(descripcion).append('\'');
         sb.append(", total=").append(total);
-        sb.append(", cliente=").append(cliente);
+        //sb.append(", cliente=").append(cliente); para evitar la llamada de forma cíclica ya que en Cliente en el toString también llama a factura
         sb.append('}');
         return sb.toString();
     }
