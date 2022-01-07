@@ -121,6 +121,11 @@ public class Cliente {
         return this;
     }
 
+    public void removeFactura(Factura factura) {
+        this.facturas.remove(factura);
+        factura.setCliente(null);
+    }
+
     @Override
     public String toString() {
         LocalDateTime creado = this.audit != null ? audit.getCreadoEn() : null;
@@ -137,8 +142,5 @@ public class Cliente {
         sb.append('}');
         return sb.toString();
     }
+
 }
-/**
- * Seccupib 59
- * 519. Codificando ejemplo OneToMany
- */
