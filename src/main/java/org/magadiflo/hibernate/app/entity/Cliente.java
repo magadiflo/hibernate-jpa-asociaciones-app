@@ -39,6 +39,10 @@ public class Cliente {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cliente")
     private List<Factura> facturas;
 
+    @OneToOne
+    @JoinColumn(name = "cliente_detalle_id")
+    private ClienteDetalle clienteDetalle;
+
     public Cliente() {
         this.direcciones = new ArrayList<>();
         this.facturas = new ArrayList<>();
@@ -114,6 +118,14 @@ public class Cliente {
         this.facturas = facturas;
     }
 
+    public ClienteDetalle getClienteDetalle() {
+        return clienteDetalle;
+    }
+
+    public void setClienteDetalle(ClienteDetalle clienteDetalle) {
+        this.clienteDetalle = clienteDetalle;
+    }
+
     //Establecemos la relación en ambos lados para su guardado
     public Cliente addFactura(Factura factura){
         this.facturas.add(factura);
@@ -139,6 +151,7 @@ public class Cliente {
         sb.append(", editadoEn=").append(editado);
         sb.append(", direcciones=").append(direcciones);
         sb.append(", facturas=").append(facturas);
+        sb.append(", clienteDetalle=").append(clienteDetalle);
         sb.append('}');
         return sb.toString();
     }
