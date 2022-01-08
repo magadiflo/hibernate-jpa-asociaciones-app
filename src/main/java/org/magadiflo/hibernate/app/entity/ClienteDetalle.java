@@ -15,6 +15,10 @@ public class ClienteDetalle {
     @Column(name = "puntos_acumulados")
     private Long puntosAcumulados;
 
+    @OneToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
     public ClienteDetalle() {
     }
 
@@ -45,6 +49,14 @@ public class ClienteDetalle {
 
     public void setPuntosAcumulados(Long puntosAcumulados) {
         this.puntosAcumulados = puntosAcumulados;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     @Override
