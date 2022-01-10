@@ -26,7 +26,9 @@ public class Cliente {
 
     //CascadeType.ALL, cada que se crea un Cliente, también creará a sus relaciones o sea Direcciones
     //orphanRemoval = true, al eliminar un cliente automaticamente se eliminarán todos las direcciones asociadas a él
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    //fetch = FetchType.LAZY, para la relación que termine en ...Many (ejmpl. @OneToMany) por defecto es Lazy, es decir,
+    //traerá los datos de la relación sólo cuando se le solicite
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     //Crea la llave foránea en la BD, tabla direcciones
     //@JoinColumn(name = "cliente_id")
     //Crea una tabla intermedia llamada tbl_clientes_direcciones donde se almacenan las llaves de clientes y direcciones
@@ -39,6 +41,8 @@ public class Cliente {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cliente")
     private List<Factura> facturas;
 
+    //fetch = FetchType.EAGER, para la relación que termine en ...One (ejmpl. @OneToOne) por defecto es EAGER,
+    //cargará por defecto la información asociada a las relaciones
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cliente")
     private ClienteDetalle clienteDetalle;
 

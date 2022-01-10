@@ -3,3 +3,7 @@ INSERT INTO alumnos(id, nombre, apellido) VALUES(1, 'Violeta', 'Flores');
 INSERT INTO alumnos(id, nombre, apellido) VALUES(2, 'Gabriel', 'Vilela');
 INSERT INTO cursos(id, titulo, profesor) VALUES(1, 'Curso Java', 'Andres');
 INSERT INTO cursos(id, titulo, profesor) VALUES(2, 'Curso Hibernate y JPA', 'Andres');
+INSERT INTO direcciones(calle, numero) VALUES('Bruces', 156);
+INSERT INTO direcciones(calle, numero) VALUES('Las Palmeras', 200);
+INSERT INTO tbl_clientes_direcciones (cliente_id, direccion_id) VALUES(1, 1);
+INSERT INTO tbl_clientes_direcciones (cliente_id, direccion_id) VALUES(1, 2);
