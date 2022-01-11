@@ -11,3 +11,7 @@ INSERT INTO clientes_detalles(prime, puntos_acumulados, cliente_id) VALUES(1, 80
 INSERT INTO tbl_alumnos_cursos(alumno_id, curso_id) VALUES(1, 1);
 INSERT INTO tbl_alumnos_cursos(alumno_id, curso_id) VALUES(1, 2);
 INSERT INTO tbl_alumnos_cursos(alumno_id, curso_id) VALUES(2, 1);
+INSERT INTO facturas(descripcion, total, cliente_id) VALUES('oficina', 4000, 1);
+INSERT INTO facturas(descripcion, total, cliente_id) VALUES('casa', 2000, 1);
+INSERT INTO facturas(descripcion, total, cliente_id) VALUES('deporte', 3000, 1);
+INSERT INTO facturas(descripcion, total, cliente_id) VALUES('computación', 7000, 2);

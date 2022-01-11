@@ -15,7 +15,7 @@ public class Factura {
     private String descripcion;
     private Long total;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) //Solo buscará al cliente cuando se le requiera
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
