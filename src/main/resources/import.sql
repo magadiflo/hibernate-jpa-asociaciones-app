@@ -8,3 +8,6 @@ INSERT INTO direcciones(calle, numero) VALUES('Las Palmeras', 200);
 INSERT INTO tbl_clientes_direcciones (cliente_id, direccion_id) VALUES(1, 1);
 INSERT INTO tbl_clientes_direcciones (cliente_id, direccion_id) VALUES(1, 2);
 INSERT INTO clientes_detalles(prime, puntos_acumulados, cliente_id) VALUES(1, 8000, 1);
+INSERT INTO tbl_alumnos_cursos(alumno_id, curso_id) VALUES(1, 1);
+INSERT INTO tbl_alumnos_cursos(alumno_id, curso_id) VALUES(1, 2);
+INSERT INTO tbl_alumnos_cursos(alumno_id, curso_id) VALUES(2, 1);
